@@ -15,6 +15,8 @@ let bird = {
   width: birdWidth,
   height: birdHeight,
 };
+let birdImg = new Image();
+birdImg.src = "../images/flappybird.png";
 
 window.onload = function () {
   board = document.getElementById("board");
@@ -25,10 +27,20 @@ window.onload = function () {
  
 
   //load images
-  birdImg = new Image();
-  birdImg.src = "../images/flappybird.png";
   birdImg.onload = function () {
-    context.drawImage(birdImg, birdX, birdY, bird.width, birdHeight);
-
+    context.drawImage(birdImg, bird.x, bird.y, bird.width, bird.height);
+    requestAnimationFrame(update); 
   }
+
+  
+  
 };
+
+function update(){ // update etmeden oyunu bir deneyeceğiz.
+  requestAnimationFrame(update);
+  context.clearRect(0, 0, boardWidth, boardHeight);
+  context.drawImage(birdImg, birdX, birdY, birdWidth, birdHeight);
+  console.log("updating");
+}
+
+

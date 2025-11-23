@@ -22,7 +22,13 @@ window.onload = function () {
   board.width = boardWidth;
   context = board.getContext("2d");
 
-  // draw flappy bird
-  context.fillStyle = "green";
-  context.fillRect(bird.x, bird.y, bird.width, bird.height);
+ 
+
+  //load images
+  birdImg = new Image();
+  birdImg.src = "../images/flappybird.png";
+  birdImg.onload = function () {
+    context.drawImage(birdImg, birdX, birdY, bird.width, birdHeight);
+
+  }
 };
